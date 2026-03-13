@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> 
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet">
     <title>Yi Guo - Academic Website</title>
     <style>
@@ -11,10 +11,11 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Fallback color */
+            background-color: #f4f4f4;
             color: #333;
             overflow-x: hidden;
         }
+
         .background-container {
             position: fixed;
             top: 0;
@@ -24,6 +25,7 @@
             z-index: 1;
             overflow: hidden;
         }
+
         .background-image {
             width: 100%;
             height: 100%;
@@ -34,19 +36,22 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
+
         .background-image.active {
             opacity: 1;
         }
+
         .container {
             max-width: 900px;
             margin: 20px auto;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             position: relative;
             z-index: 2;
         }
+
         header {
             text-align: center;
             padding: 10px 0;
@@ -54,27 +59,56 @@
             color: white;
             border-radius: 10px 10px 0 0;
         }
+
         header h2, header h3 {
             color: white;
         }
+
         h1, h2, h3 {
             color: #990000;
         }
-        nav {
-            text-align: center;
+
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
             margin: 20px 0;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
         }
-        nav a {
-            text-decoration: none;
+
+        .tab-button {
+            background: #fff;
+            border: 2px solid #990000;
             color: #990000;
+            padding: 10px 16px;
             font-weight: bold;
-            margin: 0 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-family: inherit;
         }
-        section {
+
+        .tab-button:hover {
+            background: #f7eaea;
+        }
+
+        .tab-button.active {
+            background: #990000;
+            color: white;
+        }
+
+        .tab-panel {
+            display: none;
             margin-bottom: 20px;
             padding: 10px;
-            /* Removed min-height: 100vh */
         }
+
+        .tab-panel.active {
+            display: block;
+        }
+
         .go-top {
             display: block;
             text-align: right;
@@ -83,9 +117,11 @@
             color: #333;
             font-weight: bold;
         }
+
         .go-top:hover {
             color: #0066cc;
         }
+
         footer {
             text-align: center;
             padding: 10px;
@@ -94,6 +130,7 @@
             border-radius: 0 0 10px 10px;
             margin-top: 20px;
         }
+
         .profile-image {
             display: block;
             margin: 0 auto 20px;
@@ -104,250 +141,100 @@
     </style>
 </head>
 <body>
-      <div class="background-container">
+    <div class="background-container">
         <img src="bk1.jpg" class="background-image active" alt="Background 1">
         <img src="bk2.jpg" class="background-image" alt="Background 2">
         <img src="bk3.jpg" class="background-image" alt="Background 3">
         <img src="bk4.jpg" class="background-image" alt="Background 4">
-        <!-- Add more background images as needed -->
     </div>
-  <div id="top"></div>
+
+    <div id="top"></div>
+
     <div class="container">
         <header>
-<table style="width:100%">
-    <tr>          
-        <td><img style="width:128px;" src="gy.jpg" alt="Doctor Yi Guo" /></td>    
-        <td style="text-align: left;">
-            <h2>Dr Guo, Yi</h2>      
-            <h3>Data Science, Computational Statistics and Machine Learning<br />          
-            Centre for Research in Mathematics and Data Science</h3>
-        </td>         
-    </tr>     
-</table>
+            <table style="width:100%">
+                <tr>
+                    <td><img style="width:128px;" src="gy.jpg" alt="Doctor Yi Guo" /></td>
+                    <td style="text-align: left;">
+                        <h2>Dr Guo, Yi</h2>
+                        <h3>Data Science, Computational Statistics and Machine Learning<br>
+                        Centre for Research in Mathematics and Data Science</h3>
+                    </td>
+                </tr>
+            </table>
         </header>
 
-        <nav>
-            <!-- <a href="#about">About</a> -->
-            <a href="#teaching">Teaching</a>
-            <a href="#research">Research</a>
-            <a href="#publications">Publications & Code</a>
-            <a href="#supervision">HDR Supervision</a>
-            <a href="#contact">Contact</a>
+        <nav class="tab-nav" aria-label="Main sections">
+            <button class="tab-button active" data-tab="teaching">Teaching</button>
+            <button class="tab-button" data-tab="research">Research</button>
+            <button class="tab-button" data-tab="publications">Publications & Code</button>
+            <button class="tab-button" data-tab="supervision">HDR Supervision</button>
+            <button class="tab-button" data-tab="contact">Contact</button>
         </nav>
 
-        <section id="teaching">
+        <section id="teaching" class="tab-panel active">
             <h2>Teaching</h2>
-            <div class="description">            
-              <h3>Current Teaching Areas</h3>
-              <ul>
-                <li> <span class="unit-code">MATH7002</span> <span class="unit-name">Advanced Statistical Methods</span> </li>
-                <li> <span class="unit-code">COMP3032</span> <span class="unit-name">Machine Learning</span> </li>
-                <li> <span class="unit-code">INFO7001</span> <span class="unit-name">Advanced Machine Learning</span> </li>
-		<li> <span class="unit-code">COMP3002/COMP7003</span> <span class="unit-name">Applications of Big Data/Big Data</span> </li>
-                <li> <span class="unit-code">INFO7016,INFO7017</span> <span class="unit-name">Master Project A&B</span> </li>
-		<li> <span class="unit-code">Optimisation, </span> <span class="unit-name">Under development</span> </li>
-              </ul>   
-              <a href="#top" class="go-top">Go to Top ↑</a>
-        </section>
-        
-
-        <section id="research">
-            <h2>Research</h2>
-            <div class="description">              
-                <p>My research interests are in machine learning, computational statistics and some applied mathematics such as optimisation, with applications in the areas such as natural language processing, computer vision, image analysis, remote sensing and in applied sciences as well such as agriculture, environment monitoring, material science, medical science and so on.</p>              
-                <p>&nbsp;The models I worked on include</p>              
+            <div class="description">
+                <h3>Current Teaching Areas</h3>
                 <ul>
-                    <li>Large Language Models</li>                
-                    <li>Dimensionality reduction</li>                
-                    <li>Manifold learning</li>                
-                    <li>Robust models</li>                
+                    <li><span class="unit-code">MATH7002</span> <span class="unit-name">Advanced Statistical Methods</span></li>
+                    <li><span class="unit-code">COMP3032</span> <span class="unit-name">Machine Learning</span></li>
+                    <li><span class="unit-code">INFO7001</span> <span class="unit-name">Advanced Machine Learning</span></li>
+                    <li><span class="unit-code">COMP3002/COMP7003</span> <span class="unit-name">Applications of Big Data/Big Data</span></li>
+                    <li><span class="unit-code">INFO7016,INFO7017</span> <span class="unit-name">Master Project A&amp;B</span></li>
+                    <li><span class="unit-code">Optimisation</span> <span class="unit-name">Under development</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="research" class="tab-panel">
+            <h2>Research</h2>
+            <div class="description">
+                <p>My research interests are in machine learning, computational statistics and some applied mathematics such as optimisation, with applications in the areas such as natural language processing, computer vision, image analysis, remote sensing and in applied sciences as well such as agriculture, environment monitoring, material science, medical science and so on.</p>
+                <p>&nbsp;The models I worked on include</p>
+                <ul>
+                    <li>Large Language Models</li>
+                    <li>Dimensionality reduction</li>
+                    <li>Manifold learning</li>
+                    <li>Robust models</li>
                     <li>Blind source separation</li>
-                    <li>Subspace clustering</li>              
+                    <li>Subspace clustering</li>
                 </ul>
                 <p>&nbsp;These methodologies have been applied to many problems in spectroscopy, remote sensing, computer vision, image processing, signal processing and so on.</p>
-                <p>&nbsp;My recent research focuses on data science including&nbsp;</p>              
+                <p>&nbsp;My recent research focuses on data science including&nbsp;</p>
                 <ul>
                     <li>Natural Language Processing (NLP) modeling</li>
-                    <li>spatial temporal models (for tensorial data)&nbsp;</li>                
-                    <li>complex neural networks&nbsp;</li>                
+                    <li>spatial temporal models (for tensorial data)&nbsp;</li>
+                    <li>complex neural networks&nbsp;</li>
                     <li>Neural processing</li>
-                </ul>              
-                <p></p>
-                <p><em>                If you are interested in pursuing PhD study in machine learning or computational statistics, please contact me through email. </em></p>            
+                </ul>
+                <p><em>If you are interested in pursuing PhD study in machine learning or computational statistics, please contact me through email.</em></p>
             </div>
-            <a href="#top" class="go-top">Go to Top ↑</a>
         </section>
 
-        <section id="publications">
-            <h2>Publications & Code</h2>
+        <section id="publications" class="tab-panel">
+            <h2>Publications &amp; Code</h2>
             <div class="journals">
                 <h3>Scholarly Books and Chapters</h3>
                 <ul>
-                    <li> Kaitao Lai, Natalie Twine, Aidan O’Brien, Yi Guo, Denis Bauer. <a href='https://doi.org/10.1016/B978-0-12-809633-8.20325-7'>Artificial Intelligence and Machine Learning in Bioinformatics</a>, Reference Module in Life Sciences, 2018, ISBN: 978-0-12-809633-8 </li>
-                    <li> Yi Guo, Hongdong Li, Weidong Cai, Manzur Murshed, Zhiyong Wang, Junbing Gao, David Dagan Feng. <a href='https://dblp.org/db/conf/dicta/dicta2017.html'>Proceedings of International Conference on Digital Image Computing: Techniques and Applications (DICTA)</a>, IEEE Catalog Number: CFP17397-ART, ISBN: 978-1-5386-2839-3, 2017 </li>
-                    <li> Feng Li, Yi Guo. <a href='https://book.sciencereading.cn/shop/book/Booksimple/show.do?id=BC45EB526170F48CA95543C8262477EC9000'>An Introduction to Compressive Sensing</a>. Science Press, 2015 (in Chinese) </li>
+                    <li>Kaitao Lai, Natalie Twine, Aidan O’Brien, Yi Guo, Denis Bauer. <a href="https://doi.org/10.1016/B978-0-12-809633-8.20325-7">Artificial Intelligence and Machine Learning in Bioinformatics</a>, Reference Module in Life Sciences, 2018, ISBN: 978-0-12-809633-8</li>
+                    <li>Yi Guo, Hongdong Li, Weidong Cai, Manzur Murshed, Zhiyong Wang, Junbing Gao, David Dagan Feng. <a href="https://dblp.org/db/conf/dicta/dicta2017.html">Proceedings of International Conference on Digital Image Computing: Techniques and Applications (DICTA)</a>, IEEE Catalog Number: CFP17397-ART, ISBN: 978-1-5386-2839-3, 2017</li>
+                    <li>Feng Li, Yi Guo. <a href="https://book.sciencereading.cn/shop/book/Booksimple/show.do?id=BC45EB526170F48CA95543C8262477EC9000">An Introduction to Compressive Sensing</a>. Science Press, 2015 (in Chinese)</li>
                 </ul>
+
                 <h3>Journal Articles</h3>
-      <ol>
-      <li> Wangli Yang, jie Yang, Yi Guo, Johan Barthelemy, <a href='https://doi.org/10.1162/COLI.a.574'>Defensive Dual Masking for Robust Adversarial Defense.</a> Computational Linguistics, 2025</li>
-      <li> Yiting Duan, Jie Yang, Ming Yin, Yi Guo, <a href='https://doi.org/10.48550/arXiv.2505.04815'>Causal Discovery in Symmetric Dynamic Systems with Convergent Cross Mapping.</a> Chaos, 2025. <a href='./papers/CCM_Chaso.pdf'>[pdf]</a></li>
-      <li> Xunzhan Yao, Ming Yin, Yonghua Wang, Yi Guo, <a href='https://doi.org/10.1016/j.imavis.2025.105722'>Flexible disentangled representation learning with soft-splitting for multi-view data,</a> Image and Vision Computing. 2025</li>
-      <li> Junjie Yang, Liu Yang, Yi Guo, Yuan Xie, Shengli Xie, <a href='https://doi.org/10.1016/j.apacoust.2025.110874'>Under-determined audio source separation using the convolutive narrowband approximation and flexible $\ell_p$ regularizer,</a> Applied Acoustics, 2025</li>
-      <li>Namal Jayasuriya1, Malith Weerasekara, Oula Ghannoum, Yi Guo, Wen Hu, <a href='https://doi.org/10.1016/j.ohx.2025.e00624'>pi-VSTL: Image Data Collection Platform using Off-the-shelf Hardware for Vertically Supported Crops in State-of-the-art Glasshouses. </a>HardwareX, 2025 <a href='https://doi.org/10.1016/j.ohx.2025.e00624'>[pdf]</a></li>
-        <li>Jing Ke, Yijin Zhou, Yiqing Shen, Yi Guo, Ning Liu, Xiaodan Han, Dinggang Shen, <a href='https://doi.org/10.1016/j.media.2024.103424'>Learnable Color Space Conversion and Fusion for Stain Normalization in Pathology Images. </a>Medical Image Analysis, 2024 <a href='https://doi.org/10.1016/j.media.2024.103424'>[pdf]</a><a href='https://github.com/yjzscode/Optimal-Normalisation-in-Color-Spaces'>[code]</a></li>
-	      <li>Dai Shi, Zhiqi Shao, Yi Guo, Qibin Zhao, Junbin Gao, <a href='https://openreview.net/pdf?id=q4iSLPoFe7'>Revisiting Generalized p-Laplacian Regularized Framelet GCNs: Convergence, Energy Dynamic and as Non-Linear Diffusion. </a>Transaction on Machine Learning Research, 2024 <a href='https://openreview.net/pdf?id=q4iSLPoFe7'>[pdf]</a></li>
-	      <li>Bahman Javadi, Arman Khan, Namal Jayasuriya, Yi Guo, <a href='http://dx.doi.org/10.1109/TCE.2024.3411552'>Smart Nutrition Monitoring System Using Serverless Edge Computing. </a>IEEE Transactions on Consumer Electronics, 2024 <a href='https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10552155'>[pdf]</a></li>
-	      <li>Dai Shi, Zhiqi Shao, Junbin Gao, Zhiyong Wang, and Yi Guo, <a href='https://doi.org/10.1109/TNNLS.2024.3442379'>Frameless Graph Knowledge Distillation.</a> IEEE Transactions on Neural Networks and Learning Systems, 2024 <a href='https://doi.org/10.1109/TNNLS.2024.3442379'>[pdf]</a></li>
-	      <li>Namal Jayasuriya, Yi Guo, Wen Hu and Oula Ghannoum, <a href='https://doi.org/10.1016/j.compag.2024.108669'>Machine Vision based Plant Height Estimation for Protected Crop Facilities.</a> Computers and Electronics in Agriculture, 2024. <a href='https://www.sciencedirect.com/science/article/pii/S0168169924000607/pdfft?md5=63d6cdc922561a724a4d79ac75fcc044&pid=1-s2.0-S0168169924000607-main.pdf'>[pdf]</a></li>
-	      <li>Dai Shi, Andi Han, Lequan Lin, Yi Guo, Zhiyong Wang, Junbin Gao, <a href='https://link.springer.com/article/10.1007/s13042-024-02326-w'>Design your own universe: a physics-informed agnostic method for enhancing graph neural networks.</a> International Journal of Machine Learning and Cybernetics, 2024 <a href='https://link.springer.com/content/pdf/10.1007/s13042-024-02326-w.pdf'>[pdf]</a></li>
-	      <li>Yi Guo, Feng Li and Zhuo Wang,<a href='https://doi.org/10.1080/01431161.2023.2208710'> Cloud Removal Using Scattering Model and Evaluation via Semi-realistic simulation.</a> International Journal of Remote Sensing, 2023. <a href='https://arxiv.org/abs/2210.01981'>[pdf]</a><a href='https://github.com/yguo-wsu/clouldremoval'>[code]</a></li>
-	      <li> Zhiqi Shao, Dai Shi, Andi Han, Andrey Vasnev, Yi Guo and Junbin Gao, <a href='https://doi.org/10.1007/s13042-023-01982-8'>Enhancing framelet GCNs with generalized p-Laplacian regularization</a>. International Journal of Machine Learning and Cybernetics, 2023 <a href='https://link.springer.com/content/pdf/10.1007/s13042-023-01982-8.pdf?pdf=button'>[pdf]</a><a href='https://github.com/superca729/pL-UFG'>[code]</a></li> 
-	      <li>Ke, Jing, Yiqing Shen, Yizhou Lu, Yi Guo, and Dinggang Shen, <a href='https://doi.org/10.1016/j.cmpb.2023.107520'>Mine Local Homogeneous Representation by Interaction Information Clustering with Unsupervised Learning in Histopathology Images</a>, Computer Methods and Programs in Biomedicine 235, 2023</li>
-<li>Ke Jing, Yizhou Lu, Yiqing Shen, Junchao Zhu, Yijin Zhou, Jinghan Huang, Jieteng Yao, Xiaoyao Liang, Yi Guo, Zhonghua Wei, Sheng Liu, Qin Huang, Fusong Jiang, Dinggang Shen, <a href='https://doi.org/10.1016/j.media.2023.102758'>ClusterSeg: A Crowd Cluster Pinpointed Nucleus Segmentation Framework with Cross-Modality Datasets.</a> Medical Image Analysis 85, 2023</li>
-<li>Xue Yang, Liang Liang, Feng Li, Qingjiu Tian, Xiaotian Lu, Lei Xin, Yi Guo, Wenjun Dong, <a href='https://doi.org/10.1109/TGRS.2022.3221528'>Hyper-Temporal Data Based Modulation Transfer Functions Compensation for Geostationary Remote Sensing Satellites.</a> IEEE Transactions on Geoscience and Remote Sensing, 2022</li>
-<li>Elise Baker, Weicong Li, Rosemary Hodges, Sarah Masso, Caroline Jones, Yi Guo, Mary Alt, et al. 2022. <a href='https://doi.org/10.1080/17549507.2022.2146194'>Harnessing Automatic Speech Recognition to Realise Sustainable Development Goals 3, 9, and 17 through Interdisciplinary Partnerships for Children with Communication Disability</a>,  International Journal of Speech-Language Pathology, 2022</li>
-<li>Yi Guo, Stephen Tierney, Junbin Gao, <a href='https://doi.org/10.1016/j.sigpro.2021.108082'> Efficient Sparse Subspace Clustering by Nearest Neighbour Filtering</a>, Signal Processing, 2021 <a href='./papers/KSSC_preprint.pdf'>[pdf]</a><a href=./code/kssccode.zip>[Matlab code]</a></li>
-<li>Yi Guo, Stephen Tierney, Junbin Gao, <a href='https://doi.org/10.1109/TNNLS.2020.2979444'>Robust Functional Manifold Clustering, IEEE Transactions on Neural Networks and Learning Systems</a>, 2020 <a href='./papers/RFMCpreprint.pdf'>[pdf]</a><a href=./code/rfmc/RFMC_code.zip>[Matlab code]</a></li>
-<li>Kingshuk Mazumdar, Dongmo Zhang, Yi Guo,  <a href='https://doi.org/10.1007/s42786-019-00013-x'>Portfolio selection and unsystematic risk optimisation using swarm intelligence</a>, Journal of Banking and Financial Technology, 2019</li>
-<li>Junjie Yang, Yi Guo, Zuyang Yang, Liu Yang, Shengli Xie,  <a href='https://doi.org/10.1109/ACCESS.2019.2956772'>Estimating Number of Speakers via Density-Based Clustering and Classification Decision</a>, IEEE Access, Vol 7, 2019<a href=./papers/EON-access.pdf>[pdf]</a><a href=./code/sourcenumber.zip>[Matlab code]</a></li>
-<li>Junjie Yang, Yi Guo, Zuyang Yang, Member, Shengli Xie,  <a href='https://doi.org/10.1109/TCSI.2019.2908394'>Under-determined Convolutive Blind Source Separation Combining Density-based Clustering and Sparse Reconstruction in Time-Frequency Domain</a>, IEEE Transactions on Circuits and Systems I, 2019<a href='./papers/DensityCBSS-TCS.pdf'>[pdf]</a><a href="./code/Basic_Version_Underdetermined_Counvolutive_Source_separation.zip">[Matlab code]</a></li>
-<li>Yang Liu, Yi Guo, Feng Li, Lei Xin, Puming Huang,  <a href='https://doi.org/10.1109/LGRS.2018.2878036'>Sparse Dictionary Learning for Blind Hyperspectral Unmixing</a>, IEEE Geoscience and Remote Sensing Letters, 2018<a href=https://ieeexplore.ieee.org/document/08552382>[pdf]</a></li>
-<li>Ming Yin, Junbin Gao, Shengli Xie,Yi Guo,  <a href='https://doi.org/10.1109/TNNLS.2018.2851444'>Multi-view Subspace Clustering via Tensorial t-Product Representation</a>, IEEE Transactions on Neural Networks and Learning Systems, 2018<a href=https://ieeexplore.ieee.org/document/08421595>[pdf]</a></li>
-<li>Mark Berman, Zhipeng Hao, Glenn Stone and Yi Guo,  <a href='https://doi.org/10.1109/JSTARS.2018.2850047'>An investigation into the impact of band error variance estimation on intrinsic dimension estimation in hyperspectral images</a>, IEEE Journal Of Selected Topics In Applied Earth Observations And Remote Sensing, 2018<a href=https://ieeexplore.ieee.org/document/08411334>[pdf]</a></li>
-<li> Yi Guo, Feng Li, Peter Caccetta, Drew Devereux,  <a href='https://doi.org/10.1117/1.JRS.11.015021'>Multiple Temporal Mosaicing for Landsat TM Satellite Images</a>, Journal of Applied Remote Sensing, 2017 </li>
-<li> Feng Li, Lei Xin, Yi Guo, Xianghao Kong, Xiuping Jia,  <a href='https://doi.org/10.1109/LGRS.2017.2768331'>Super Resolution for GaoFen-4 Remote Sensing Images</a>, IEEE Geoscience And Remote Sensing Letters, 2017 </li>
-<li> Anthony Traylen, Peter Caccetta, Yi Guo, Mark Berman, Ian C. Lau,  <a href='https://doi.org/10.1080/01431161.2017.1385107'>Endmember Search And Proportion Estimates From Airborne Hyperspectral Surveys</a>, Internatinal Journal of Remote Sensing, 2017  </li>
-<li> Xia Hong, Sheng Chen, Yi Guo, Junbin Gao,  <a href='https://doi.org/10.1080/00207721.2017.1311383'>L1 Norm Penalized Orthogonal Forward Regression</a>, International Journal of Systems Sciences, 2017 </li>
-<li> Mark Berman, Leanne Bischof, Ryan Lagerstron, Yi Guo, Jon Huntington, Peter Mason and Andrew A. Green,  <a href='https://doi.org/10.1109/TGRS.2017.2676816'>A Comparison Between Three Sparse Unmixing Algorithms Using a Large Library of Shortwave Infrared Mineral Spectra</a>, IEEE Transactions on Geoscience and Remote Sensing 2017 </li>
-<li> Feng Li, Xin Lei, Yi Guo, Junbin Gao, Xiuping Jia,  <a href='https://doi.org/10.1109/TGRS.2016.2621123'>A Framework of Mixed Sparse Representations for Remote Sensing Images</a>. IEEE Transactions on Geoscience and Remote Sensing 2016 </li>
-<li> Zhipeng hao, Mark Berman, Yi Guo, Glenn Stone, Iain Johnstone.  <a href='https://doi.org/10.1109/JSTARS.2016.2580178'>Semi-Realistic Simulations of Natural Hyperspectral Scenes</a>, IEEE Journal of Selected Topics in Applied Earth Observation and Remote Sensing 2016 </li>
-<li> Yongguang Zhai, Lifu Zhang , Nan Wang, Yi Guo, Yi Cen, Taixia Wu , Qing-Xi Tong.  <a href='https://doi.org/10.1109/LGRS.2016.2564993'>A Modified Locality-Preserving Projection Approach for Hyperspectral Image Classification</a>, IEEE Geoscience and Remote Sensing Letters, 2016 </li>
-<li> Aidan R. O’Brien, Neil F. W. Sanders, Yi Guo, Fabian A. Buske, Rodney J. Scott, Denis C. Bauer.  <a href='https://doi.org/10.1186/s12864-015-2269-7'>VariantSpark: Population Scale Clustering of Genotype Information</a>, BMC Genomics, 2016 </li>
-<li> David Clifford, Yi Guo.  <a href='https://doi.org/10.1071/SR14275'>Combining two soil property rasters using an adaptive gating approach</a>. Soil Research, 2015 </li>
-<li> Ming Yin, Junbin Gao, Zhouchen Lin, Qinfeng Shi, Yi Guo.  <a href='https://doi.org/10.1109/TIP.2015.2472277'>Dual Graph Regularized Low-rank Matrix Approximation for Data Representation</a>, IEEE Transactions on Image Processing 2015 </li>
-<li> Ming Yin, Junbin Gao, Yi Guo.  <a href='https://doi.org/10.1049/el.2015.0659'>A Nonlinear Low-rank Representation on Stiefel Manifold</a>, Electronics Letters, 2015 </li>
-<li> Yi Guo, Junbin Gao, Feng Li.  <a href='https://doi.org/doi:10.1016/j.knosys.2014.11.006'>Random Spatial Subspace Clustering</a>. Knowledge-Based Systems, 2014 </li>
-<li> Yi Guo, Mark Berman and Junbin Gao.  <a href='https://doi.org/doi:10.1016/j.csda.2014.02.005'>Group Subset Selection for Linear Regression</a>. Computational Statistics and Data Analysis, 2014  </li>
-<li> Yi Guo, Junbin Gao, Feng Li.  <a href='https://doi.org/10.1117/1.JRS.8.083644'>Spatial Subspace Clustering for Drill Hole Spectral Data</a>, Journal of Applied Remote Sensing, 2014 </li>
-<li> Xuejian Sun, Lifu Zhang, Hang Yang, Taixia Wu, Yi Cen, and Yi Guo,  <a href='https://doi.org/10.1109/JSTARS.2014.2356512'>Enhancement of Spectral Resolution for Remotely Sensed Multispectral Image</a>. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 2014 </li>
-<li> Feng Li, ChuanRong Li, LingLi Tang, Yi Guo.  <a href='https://doi.org/10.1109/JSTARS.2014.2356512'>Elastic registration for airborne multispectral line scanners</a>, Journal of Applied Remote Sensing, 2014  </li>
-<li> Yi Guo and Mark Berman.  <a href='https://doi.org/10.1016/j.chemolab.2012.08.010'>A Comparison Between Subset Selection and L1 Regularisation with An Application in Spectroscopy</a>. Journal of Chemometrics and Intelligent Laboratory Systems, 2012 </li>
-<li> Paul W. Kwan, Junbin Gao, Yi Guo, Keisuke Kameyama.  <a href='https://doi.org/10.1142/S0218001410007841'>A Learning Framework for Adaptive Fingerprint Identification using Relevance Feedback</a>. International Journal of Pattern Recognition and Artificial Intelligence, 2010  </li>
-<li> Junbin Gao, Paul W. Kwan, Yi Guo.  <a href='https://doi.org/10.1016/j.neucom.2008.01.027'>Robust Multivariate L1 Principal Component Analysis and Its Application in Dimensionality Reduction</a>. Neurocomputing, 2009, Vol 72, 1242-1249 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan.  <a href='https://doi.org/doi:10.1109/TPAMI.2008.74'>Twin Kernel Embedding</a>. IEEE Transaction on Pattern Analysis and Machine Intelligence. 2008, Vol 30, No. 8, 1490-1495 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan.  <a href='https://doi.org/doi:10.4236/jbise.2008.12022'>Visualization of Protein Structure Relationships Using Constrained Twin Kernel Embedding</a>. International Journal of Biomedical Science and Engineering, 2008,1, 133-140 </li>
-             </ol>
+                <ol>
+                    <li>Wangli Yang, jie Yang, Yi Guo, Johan Barthelemy, <a href="https://doi.org/10.1162/COLI.a.574">Defensive Dual Masking for Robust Adversarial Defense.</a> Computational Linguistics, 2025</li>
+                    <li>Yiting Duan, Jie Yang, Ming Yin, Yi Guo, <a href="https://doi.org/10.48550/arXiv.2505.04815">Causal Discovery in Symmetric Dynamic Systems with Convergent Cross Mapping.</a> Chaos, 2025. <a href="./papers/CCM_Chaso.pdf">[pdf]</a></li>
+                    <li>Xunzhan Yao, Ming Yin, Yonghua Wang, Yi Guo, <a href="https://doi.org/10.1016/j.imavis.2025.105722">Flexible disentangled representation learning with soft-splitting for multi-view data,</a> Image and Vision Computing. 2025</li>
+                    <li>Junjie Yang, Liu Yang, Yi Guo, Yuan Xie, Shengli Xie, <a href="https://doi.org/10.1016/j.apacoust.2025.110874">Under-determined audio source separation using the convolutive narrowband approximation and flexible \(\ell_p\) regularizer,</a> Applied Acoustics, 2025</li>
+                </ol>
 
-              <h3>Conference Papers</h3>
-              <ol> <a href=''> </a>
-          <li>Junping Liu, Zhenhao Hu, Xinrong Hu, Wangli Yang, Wanqing Li, Jie Yang, and Yi Guo. MACRec: A Multi-View Subspace Alignment Framework for Contrastive Sampling Calibration in Recommendation. AAAI 2026</li>
-          <li>Junping Liu, Zhenhao Hu, Xinrong Hu, Wangli Yang, Wanqing Li, Jie Yang, and Yi Guo. Every Lie Has a Grain of Truth: Disentangling Deception from Authentic Content for Fake News Detection. IEEE Big Data 2025</li>
-          <li>Junping Liu, Xiaolong Li, Xinrong Hu, Wangli Yang, Wanqing Li, Jie Yang, Wenbin Zhang, and Yi Guo. Impact-Aware Retrieval Defense: Mitigating Word Substitution Ranking Attacks for Enhanced Stability. IEEE Big Data 2025</li>
-          <li>Junping Liu, Mingchao Yu, Xinrong Hu, Jie Yang, Yi Guo, Wanqing Li, and Wenbin Zhang, Negative-Free Graph Contrastive Learning for Recommendation. IEEE ICDM, 2025</li>
-          <li>Wangli Yang, Xinrong Hu, Jie Yang and Yi Guo, <a href='https://doi.org/10.1007/978-981-96-8170-9_2'>sMOOD: subManifold based Out-Of-Distribution detection</a>. PAKDD, 2025</li>
-          <li>Dai Shi, Lequan Lin, Andi Han, Zhiyong Wang, Yi Guo and Junbin Gao, <a href='https://arxiv.org/abs/2410.05593'>When Graph Neural Networks Meet Dynamic Mode Decomposition</a>. ICLR, 2025</li>
-		      <li>Junping Liu, Jiaqi He, Xinrong Hu, Wangli Yang, Jie Yang and Yi Guo, <a href=''>Importance-Awareness Masking Network for Robust Document Retrieval</a>. ICASSP, 2025</li>
-		      <li>Xun Yao, Zijian Huang, Xinrong Hu, JACK Yang and Yi Guo, <a href='https://proceedings.mlr.press/v244/yao24b.html'>Masking the Unknown: Leveraging Masked Samples for Enhanced Data Augmentation</a>. UAI, 2024 <a href='https://raw.githubusercontent.com/mlresearch/v244/main/assets/yao24b/yao24b.pdf'>[pdf]</a></li>
-		      <li>Wangli Yang, Jie Yang, Wanqing Li and Yi Guo, <a href='https://link.springer.com/chapter/10.1007/978-3-031-70552-6_11'>ConClue: Conditional Clue Extraction for Multiple Choice Question Answering</a>. ICDAR, 2024 <a href='https://link.springer.com/content/pdf/10.1007/978-3-031-70552-6.pdf'></a></li>
-		      <li>Xinrong Hu, Wushuan Chen, Jie Yang, Yi Guo, Xun Yao, Bangchao Wang, Junping Liu, Ce Xu, <a href='https://dl.acm.org/doi/10.1145/3616855.3635835'>SCAD: Subspace Clustering based Adversarial Detector</a>. WSDM, 2024 <a href='./papers/SCAD.pdf'>[pdf]</a></li>
-                      <li>Xun Yao, Zhixin Zhang, Xinrong Hu, Jack Yang, Yi Guo, Daniel Zhu, <a href='https://dl.acm.org/doi/10.1145/3616855.3635796'>COTER: Conditional Optimal Transport meets Table Retrieval</a>. WSDM, 2024 <a href='./papers/COTER.pdf'>[pdf]</a></li>
-		      <li>Xun Yao, Ruyi He, Xinrong Hu, Jie Yang, Yi Guo, and Zijian Huang, <a href='https://doi.org/10.1109/BigData59044.2023.10386799'>Improving Adversarially Robust Sequential Recommendation through Generalizable Perturbations</a>. Big Data, 2023</li>
-		      <li>Dai Shi, Andi Han, Junbin Gao and Yi Guo, <a href='https://proceedings.mlr.press/v222/shi24a/shi24a.pdf'>A New Perspective On the Expressive Equivalence Between Graph Convolution and Attention Models</a>. ACML, 2023</li>
-		      <li>Xun Yao, Junlong Ma, Xinrong Hu, Jie Yang and Yi Guo, <a href='https://doi.org/10.1007/978-981-99-7254-8_7'>Towards robust token embeddings for Extractive Question Answering</a>. International Conference on Web Information Systems Engineering (WISE), 2023 <a href='https://staff.cdms.westernsydney.edu.au/~yiguo/papers/robustEQA_WISE2023.pdf'>[pdf]</a></li>
-		      <li>Xun Yao, Qihang Yang, Xinrong Hu, Jie Yang and Yi Guo, <a href='https://doi.org/10.1007/978-981-99-7254-8_59'>CREAM: Named Entity Recognition with Concise query and Region-Aware Minimization</a>. International Conference on Web Information Systems Engineering (WISE), 2023</li>
-		      <li>Junping Liu, Mingkang Gong, Xinrong Hu, Jie Yang, and Yi Guo, <a href='https://doi.org/10.1007/978-3-031-39847-6_31'>MIRS: [MASK] Insertion based Retrieval Stabilizer for Query Variations</a>. International Conference on Database and Expert Systems Applications (DEXA), 2023 <a href='https://doi.org/10.1007/978-3-031-39847-6_31'>[pdf]</a></li>
-		      <li>Dai Shi, Andi Han, Junbin Gao, and Yi Guo, <a href='https://doi.org/10.1109/IJCNN54540.2023.10191488'>Fixed Point Laplacian Mapping: A Geometrically Correct Manifold Learning Algorithm</a>. IJCNN, 2023 <a href='https://arxiv.org/abs/2106.01608'>[pdf]</a><a href='https://github.com/EEthanShi/Fixed-Point-Laplacian-Mapping -A-Geometrically-Correct-Manifold-Learning-Algorithm.git'>[code]</a></li>
-		      <li>Xinrong Hu, Ce Xu, Junlong Ma, Zijian Huang, Jie Yang, Yi Guo and Johan Barthelemy, <a href='https://10.18653/v1/2023.findings-eacl.78'>[MASK] Insertion: a robust method for anti-adversarial attacks</a>. EACL, 2023 <a href='https://aclanthology.org/2023.findings-eacl.78/'>[pdf]</a></li>
-		      <li>Junping Liu, Shijie Mei, Xinrong Hu, Xun Yao, Jack Yang, and Yi Guo, <a href='http://dx.doi.org/10.18653/v1/2022.findings-naacl.82'>Seeing the wood for the trees: a contrastive regularization method for the low-resource Knowledge Base Question Answering</a>. NAACL, 2022 <a href='https://aclanthology.org/2022.findings-naacl.82.pdf'>[pdf]</a><a href='https://github.com/jakeymei/smoco'>[code]</a></li>
-		      <li>Junwei Deng, Yiqing Shen, Yi Guo, Jing Ke, <a href='https://doi.org/10.1117/12.2605439'>CellSegNet: An Adaptive Multi-resolution Hybrid Network for Cell Segmentation</a>. SPIE Medical Imaging, 2022</li>
-<li>Liu Yang, Junjie Yang and Yi Guo, <a href='https://doi.org/10.1109/MSN53354.2021.00109'>Under-determined Blind Speech Separation via the Convolutive Transfer Function and lp Regularization</a>. ICMSN, 2021</li>
-<li>Jing Ke, Yiqing Shen, Xinyu Jiang, Yi Guo, Yaobing Chen, Xiaoyao Liang, <a href='https://doi.org/10.1117/12.2580688'>Multiple-datasets and multiple-label based color normalization in histopathology with cGAN</a>, Medical Imaging 2021: Digital Pathology</li>
-<li>Jing Ke, Yiqing Shen, Yi Guo, Xiaoyao Liang, <a href='https://doi.org/10.1109/ICIP40778.2020.9190987'>Fast Tumor Detector in Whole-Slide Image With Dynamic Programing Based Monte Carlo Sampling.</a>, IEEE ICIP 2020</li>
-<li>Jing Ke, Yiqing Shen, Yi Guo, Jason D. Wright, Naifeng Jing and Xiaoyao Liang, <a href='https://doi.org/10.1007/978-3-030-59137-3_24'>A high-throughput tumor location system with deep learning for colorectal cancer histopathology image</a>, Proceedings of the 18th International Conference on Artificial Intelligence in Medicine, AIME 2020</li>
-<li>Jing Ke, Yiqing Shen, Yi Guo, Jason D. Wright, and Xiaoyao Liang, <a href='https://doi.org/10.1145/3397391.3397442'>A prediction model of microsatellite status from histology images</a>, in Proceedings of the 2020 10th International Conference on Biomedical Engineering and Technology, 2020</li>
-<li>Junjie Yang, Yi Guo, Zuyun Yang, Chao Yang, <a href='https://doi.org/10.1117/12.2538077'>A sparsity-relaxed algorithm for the under-determined convolutive blind source separation</a>, 2nd International Conference on Image and Video Processing, and Artificial Intelligence, IVPAI 2019 <a href='./papers/IVP200-12.pdf'>[pdf]</a></li>
-<li>Laurence Park, Yi Guo, Jesse Read, <a href='https://doi.org/10.1007/978-3-030-46147-8_10'>Assessing the multi-labelness of multi-label data</a>, ECML, 2019 <a href='https://ecmlpkdd2019.org/downloads/paper/562.pdf'>[pdf]</a></li>
-<li>Kingshuk Mazumdar, Dongmo Zhang, Yi Guo, <a href='http://dx.doi.org/10.1007/978-3-030-29894-4_61'>Multi-peak algorithmic trading strategies using Grey Wolf Optimizer</a>, PRICAI, 2019</li>
-<li>Kingshuk Mazumdar, Dongmo Zhang, Yi Guo, <a href='http://dx.doi.org/10.1007/978-3-030-29894-4_60'>Portfolio Risk Optimisation and Diversification using Swarm Intelligence</a>, PRICAI, 2019</li>
-<li>Abdesselam Bouzerdoum, Philip B. Chapple, Mark Dras, Yi Guo, Len Hamey, Tahereh Hassanzadeh, Thanh Hoang Le, Omid Mohamad Nezami, Mehmet Orgun, Son Lam Phung, Christian Ritz, Maryam Shahpasand, Improved Deep-Learning-Based Classification of Mine-Like Contacts in Sonar Images from Autonomous Underwater Vehicles, Proc. Underwater Acoustics Conference and Exhibition (UACE), 2019</li>
-<li>Yi Guo, Simon Green, Laurence Park, Laren Rispen, <a href='https://doi.org/10.1109/DICTA.2018.8615766'>Left Ventricle Volume Measuring Using Echocardiography Sequences</a>, DICTA, 2018</li>
-<li> Yang Liu, Yi Guo, Feng Li, Lei Xin, Puming Huang, <a href='https://doi.org/10.1109/IGARSS.2018.8519090'>A Fast Algorithm To Find All Paths For Hyperspectral Unmixing</a>, IGARSS, 2018 </li>
-<li> Feng Li, Lei Xin, Yi Guo, Xiuping Jia, <a href='https://doi.org/10.1109/IGARSS.2018.8517414'>Multitemporal mid-infrared imagery based calibration and super resolution for Gaofen-4</a>, IGARSS, 2018 </li>
-<li> Feng Li, Lei Xin, Yang Liu, Jie Fu, Yuhong Liu, Lanzhou, Yi Guo, <a href='https://doi.org/10.1117/12.2278171'>High Efficient Optical Remote Sensing Images Acquisition For Nanosatellite Framework</a>, SPIE, 2017  </li> </li>
-<li> Junjie Yang, Zuyuan Yang, Yi Guo, Shengli Xie, <a href='https://doi.org/10.1145/3057039.3057055'>Blind Source Separation: Detecting Unknown Sources Number In Covariance Domain</a>, The 9th International Conference on Computer and Automation Engineering (ICCAE 2017) </li> </li>
-<li> Jing Ke, Yi Guo, Arcot Sowmya, <a href='https://doi.org/10.1109/CVPRW.2017.38'>A Fast Approximate Spectral Unmixing Algorithm based on Segmentation</a>, 13th IEEE CVPR workshop on Perception Beyond the Visible Spectrum 2017 </li>
-<li> Junbin Gao, Yi Guo, Zhiyong Wang, <a href='https://doi.org/10.1007/978-3-319-59072-1_37'>Matrix Neural Networks</a>, International Symposium on Neural Networks (ISNN) 2017 <a href='./code/Tucker_v1.py'>[python code]</a> </li>
-<li> Jing Ke, Yi Guo, Arcot Sowmya, Tomasz Bednarz, A Performance Acceleration Algorithm of Spectral Unmixing Via Subset Selection, European Symposium on Artificial Neural Networks (ESANN) 2017  </li>
-<li> Yi Guo, Feng Li, Peter Caccetta, Drew Devereux, Mark Berman, <a href='https://doi.org/10.1109/IGARSS.2016.7730888'>Cloud Filtering for Landsat TM Satellite Images Using Multiple Temporal Mosaicing</a>. IGARSS 2016 </li>
-<li> Feng Li, Tim J. Cornwell, Frank de Hoog, Lei Xin, Yi Guo. <a href='https://doi.org/10.1109/ICDSP.2016.7868651'>Compressive sensing based multi-frequency synthesis</a>, 2016 IEEE International Conference on Digital Signal Processing (DSP) </li>
-<li> Ming Yin, Yi Guo, Junbin Gao, Zhaoshui He, Shengli Xie. <a href='https://doi.org/10.1109/CVPR.2016.557'>Kernel Sparse Subspace Clustering on Symmetric Positive DefiniteManifolds</a>, IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2016 </li>
-<li> Jing Ke, Arcot Sowmya, Yi Guo, Tomasz Bednarz, Michael Buckley. <a href='http://doi.org/10.1109/DICTA.2016.7797036'>Efficient GPU Computing Framework of Cloud Filtering in Remotely Sensed Image Processing</a>, International Conference on Digital Image Computing: Techniques and Applications (DICTA) 2016 </li>
-<li> Yi Guo, Junbin Gao, Stephen Tierney, Feng Li, Ming Yin. <a href='https://doi.org/10.1109/IJCNN.2015.7280328'>Low Rank Sequential Subspace Clustering</a>, IJCNN 2015 </li>
-<li> Stephen Tierney, Yi Guo, Junbin Gao. <a href='https://doi.org/10.1109/DICTA.2015.7371306'>Selective Multi-Source Total Variation Image Restoration</a>. DICTA2015 </li>
-<li> Zhipeng Hao, Mark Berman, Yi Guo, Glenn Stone, Iain Johnstone. <a href='https://doi.org/10.1109/IGARSS.2015.7325938'>Semi-Realistic Simulations of Natural Hyperspectral Scenes</a>, IGARSS 2015 </li>
-<li> Feng Li, Yi Guo, Junbin Gao, Xiuping Jia. <a href='https://doi.org/10.1109/ICSPCC.2015.7338968'>Hyperspectral Images Mapping with Group Sparse Representations</a>, ICSPCC 2015 </li>
-<li> Stephen Tierney, Junbin Gao, Yi Guo. <a href='https://doi.org/10.1109/DICTA.2014.7008132'>The W-Penalty and its Application to Alpha Matting with Sparse Labels</a>. DICTA 2014 </li>
-<li> Stephen Tierney, Junbin Gao, Yi Guo. <a href='https://doi.org/10.1109/DICTA.2014.7008094'>Affinity Pansharpening and Image Fusion</a>. DICTA 2014 </li>
-<li> Ming Yin, Yi Guo, Junbin Gao. <a href='https://doi.org/doi:10.1109/IJCNN.2014.6889461'>Linear Subspace Learning Approach via Sparse Dimension Reduction</a>. IJCNN 2014  </li>
-<li> Junbin Gao, Xia hong, Yanfeng Sun, Yi Guo, Chris Harris. <a href='https://doi.org/10.1109/IJCNN.2014.6889385'>Dimensionality Reduction Assisted Tensor Clustering</a>. IJCNN 2014  </li>
-<li> Stephen Tierney, Junbin Gao, Yi Guo. <a href='https://doi.org/doi:10.1109/CVPR.2014.134'>Subspace Clustering for Sequential Data</a>. CVPR 2014 </li>
-<li> Xiao Tan, Changming Sun, Dadong Wang, Yi Guo, Tuan D. Pham. <a href='https://doi.org/doi:10.1007/978-3-319-10602-1_2'>Soft Cost Aggregation with Multi-Resolution Fusion</a>, ECCV 2014 </li>
-<li> Yi Guo, Junbin Gao, Fengyan Sun. <a href='https://doi.org/doi:10.1007/978-3-642-53917-6_45'>Endmember Extraction by Exemplar Finder</a>. ADMA 2013 </li>
-<li> Yi Guo, Junbin Gao, Feng Li. <a href='https://doi.org/doi:10.1109/IGARSS.2013.6723580'>Large Scale Hyperspectral Data Segmentation by Random Spatial Subspace Clustering</a>, IGARSS, 2013 </li>
-<li> Yi Guo, Junbin Gao, Feng Li. <a href='https://doi.org/doi:10.1007/978-3-642-37453-1_42'>Dimensionality Reduction with Dimension Selection</a>. PAKDD, 2013 </li>
-<li> Yi Guo, Junbin Gao, Feng Li. <a href=''>Spatial Subspace Clustering for Hyperspectral Data Segmentation</a>, ICDIPC, 2013 </li>
-<li> Junbin Gao, Yi Guo, Ming Yin. <a href='https://doi.org/doi:10.1109/ICIP.2013.6738103'>Restricted Boltzmann Machine Approach to Couple Dictionary Training for Image Super-Resolution</a>, ICIP2013 </li>
-<li> Xia Hong, Yi Guo, Sheng Chen, Junbin Gao, <a href='https://doi.org/doi:10.1109/ICDSP.2013.6622775'>Sparse Model Construction using Coordinate Descent Optimization, DSP2013 </li>
-<li> Feng Li, Lingli Tang, Chuanrong Li, Yi Guo, Junbin Gao. <a href='https://doi.org/doi:10.1117/12.2029012'>A new super resolution method based on combinatorial sparse representation for remote sensing imagery</a>. SPIE Remote Sensing, 2013 </li>
-<li> Feng Li, ChuanRong Li, LingLi Tang, Yi Guo. <a href='https://doi.org/doi:10.1117/12.974417'>Elastic band-to-band registration for airborne multispectral scanners with large field of view</a>. Europe Remote Sensing 2012 </li>
-<li> Yi Guo, Junbin Gao, Xia Hong. <a href='https://doi.org/doi:10.1007/978-3-642-35101-3_37'>Constrained Group Sparsity</a>, AI2012, 2012 </li>
-<li> Yi Guo, Junbin Gao. <a href='https://doi.org/10.1007/978-3-642-20847-8_45'>Local Feature Based Tensor Kernel for Image Manifold Learning</a>, PAKDD2011, 2011 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan. <a href='https://doi.org/doi:10.1007/978-3-642-10439-8_25'>Regularized Kernel Local Linear Embedding on Dimensionality Reduction for Non-vectorial Data</a>, 2009, AI2009  </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan. <a href='https://doi.org/10.1007/978-3-540-76928-6_71'>Twin Kernel Embedding with Relaxed Constraints on Dimensionality Reduction for Structured Data</a>. Artificial Intelligence (AI) 2007 </li>
-<li> Paul W. Kwan, Yi Guo, Junbin Gao. <a href='https://doi.org/10.1117/12.749777'>A Learning Framework for Examiner-Centric Fingerprint Classification Using Spectral Features</a>. International Symposium on Multispectral Image Processing & Pattern Recognition (MIPPR), 2007 </li>
-<li> Junbin Gao, Paul W. Kwan, Yi Guo. <a href='https://doi.org/10.1117/12.774719'>Robust L1 PCA and Its Application in Image Denoising</a>,  MIPPR, 2007 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan. <a href='https://doi.org/10.1109/ICDMW.2007.15'>Twin Kernel Embedding with Back Constraints</a>. IEEE International Conference on Data Mining (ICDM) Workshops (High Performance Data Mining), 2007 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan. <a href='https://doi.org/10.1109/ICMLC.2007.4370108'>Learning Out-Of-Sample Mapping in Non-vectorial Data Reduction Using Constrained Twin Kernel Embedding</a>. IEEE International Conference on Machine Learning and Cybernetics (ICMLC), 2007 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan. <a href='https://doi.org/10.1007/978-3-540-73871-8_22'>Learning Optimal Kernel from Distance Metric in Twin Kernel Embedding for Dimensionality Reduction and Visualization of Fingerprints</a>. Proceeding of Advanced Data Mining Application (ADMA), 2007 </li>
-<li> Yi Guo, Junbin Gao. <a href='https://doi.org/10.1109/ICMLC.2007.4370137'>An Integration of Shape Context and Semigroup Kernel in Image Classification</a>. IEEE ICMLC. 2007 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan, Kevin X. Hou. <a href='https://doi.org/10.1109/ICBBE.2007.4'>Visualization of Protein Structure Relationships Using Twin Kernel Embedding</a>. IEEE International Conference on Bioinformatics and Biomedical Engineering (ICBBE). 2007 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan. <a href='https://doi.org/10.1109/AIDM.2006.18'>Visualization of Non-vectorial Data Using Twin Kernel Embedding</a>. Workshop on Artificial Intelligence and Data Mining (AIDM). 2006 </li>
-<li> Yi Guo, Junbin Gao, Paul W. Kwan. <a href='https://doi.org/10.1007/11941439_144'>Kernel Laplacian Eigenmaps for Visualization of Non-vectorial Data</a>. AI2006 </li>
-<li> Paul W. Kwan, Junbin Gao, Yi Guo. <a href='https://www.researchgate.net/publication/229000093_Fingerprint_matching_using_enhanced_shape_context'>Fingerprint Matching Using Enhanced Shape Context</a>. IVCNZ, 2006 </li>
-<li> Yi Guo, Junbin Gao. <a href='https://doi.org/10.1109/ICSMC.2006.384691'>Manifolds of Bag of Pixels: A Better Representation for Image Recognition?</a>, IEEE International Conference on SMC, 2006 </li>
-              </ol>
-
-              <h3>Preprints</h3>
-              <ol>
-<li>Andrew Francis, Yi Guo, Paul Herley, Oliver Obst, Laurence Park, Mark Tanaka, Russell Thomson and X. Rosalind Wang, <a href=https://www.medrxiv.org/content/10.1101/2020.03.31.20049312v1>Projected ICU and Mortuary load due to COVID-19 in Sydney</a><a href=https://www.medrxiv.org/content/10.1101/2020.03.31.20049312v1.full.pdf>[pdf]</a></li>
-              </ol>
-
-              <h3>Technical Reports</h3>
-              <ol>
-                <li>	Yi Guo, Fast nonnegative least square algorithm. CMIS 2013	</li>
-<li>	Yi Guo, Group Subset Selection with weights constraints. CMIS, 2012	</li>
-<li>	Mark Berman, Leanne Bischof, Ryan Lagerstrom, Yi Guo, Jon Huntington and Peter Mason. An Unmixing Algorithm Based on a Large Library of Shortwave Infrared Spectra. CMIS, 2011	</li>
-<li>	Yi Guo, Mark Berman. Version 7 of The Spectral Assistant: Software Description. CMIS, 2010	</li>
-<li>	Yi Guo, Mark Berman. An Investigation of Some Regularization Approaches to the Unmixing of Mineral Reflectance Spectra. 2009	</li>
-<li>	Yi Guo, Mark Berman. Version 6.2 of The Spectral Assistant (Shortwave Infrared Region) and Its Training Module: Developments and Software Description. 2008	</li>
-<li>	Yi Guo, David Clifford, Mark Berman. Global Smoothing Module: Software Description. 2008	</li>
-<li>	Yi Guo, Mark Berman. Version 6.3 of The Spectral Assistant (Shortwave Infrared Region) and a New Illite Test: Developments and Software Description. 2008	</li>
-<li>	Yi Guo, Junbin Gao, Paul W. Kwan. Twin Measure Embedding. CSU, 2008	</li>
-<li>	Yi Guo, Junbin Gao, Paul W. Kwan. Twin Kernel Embedding with Back Constraints. UNE, 2007	</li>
-              </ol>
-
-              <h3> Code & demos </h3>
-<ul>
-<li> Source Number Detecion Based on Density Clustering <a href=https://ieeexplore.ieee.org/document/08918027>[paper]</a><a href=./code/sourcenumber.zip>[code]</a></li>
-<li> Robust Functional Manifold Clustering <a href=./papers/RFMC.pdf>[paper]</a><a href=./code/rfmc/RFMC_code.zip>[code]</a></li>
-<li> Group Subset Selection R pacakge <a href= https://www.sciencedirect.com/science/article/pii/S016794731400036X>[paper]</a><a href=https://cran.r-project.org/web/packages/groupsubsetselection/index.html>[code]</a></li>
-              </ul>
-
+                <p><strong>Keep the rest of your publications / conference papers / preprints / technical reports / code list here exactly as in your current file.</strong></p>
             </div>
-            <a href="#top" class="go-top">Go to Top ↑</a>
         </section>
 
-        <section id="supervision">
+        <section id="supervision" class="tab-panel">
             <h2>HDR Supervision</h2>
             <p>I am currently supervising and co-supervising PhD and HDR students in the areas of machine learning, computational statistics, and data science. My students are working on various research topics, including:</p>
             <ul>
@@ -358,70 +245,77 @@
                 <li>Robust subspace learning and clustering algorithms</li>
             </ul>
             <p>If you are interested in pursuing research in these areas, please feel free to contact me for potential supervision opportunities.</p>
-            <a href="#top" class="go-top">Go to Top ↑</a>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="tab-panel">
             <h2>Contact</h2>
             <table>
-              <tr>
-                <th scope="row">Email:</th>
-                <td>y.guo at westernsydney.edu.au</td>
-              </tr>
-              <tr>
-                <th scope="row">Phone:</th>
-                <td>(02) 9685 9374</td>
-              </tr>
-              <tr>
-                <th scope="row">Location: </th>
-                <td>PS-EN.1.34, Parramatta South</td>
-              </tr>
+                <tr>
+                    <th scope="row">Email:</th>
+                    <td>y.guo at westernsydney.edu.au</td>
+                </tr>
+                <tr>
+                    <th scope="row">Phone:</th>
+                    <td>(02) 9685 9374</td>
+                </tr>
+                <tr>
+                    <th scope="row">Location:</th>
+                    <td>PS-EN.1.34, Parramatta South</td>
+                </tr>
             </table>
-            <a href="#top" class="go-top">Go to Top ↑</a>
         </section>
 
         <footer>
-            <div id="ft"> <!-- end div#ft_links -->
-                <div id="ft_details">          
+            <div id="ft">
+                <div id="ft_details">
                     <h2>Western Sydney University</h2>
-                    <p>Locked Bag 1797<br />
-                        Penrith NSW 2751<br />          </p>  
-                    <p>Tel: +61 2 9852 5222</p>          
-                    <p>ABN 53 014 069 881<br />
-                        CRICOS Provider No: 00917k</p>        
-                </div>      
-            </div>    
-            <a href="http://www.westernsydney.edu.au/"><img alt="Western Sydney University" id="logo" src="https://www.westernsydney.edu.au/__data/assets/image/0007/962440/logo_new_c.png" width="276" height="45" title="Western Sydney University" /></a>
+                    <p>Locked Bag 1797<br>
+                    Penrith NSW 2751</p>
+                    <p>Tel: +61 2 9852 5222</p>
+                    <p>ABN 53 014 069 881<br>
+                    CRICOS Provider No: 00917k</p>
+                </div>
+            </div>
+            <a href="http://www.westernsydney.edu.au/">
+                <img alt="Western Sydney University" id="logo" src="https://www.westernsydney.edu.au/__data/assets/image/0007/962440/logo_new_c.png" width="276" height="45" title="Western Sydney University">
+            </a>
         </footer>
     </div>
-        <script>
+
+    <script>
         const images = document.querySelectorAll('.background-image');
-        const sections = document.querySelectorAll('section');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        const tabButtons = document.querySelectorAll('.tab-button');
         let currentImageIndex = 0;
 
-        function updateBackground() {
-            const scrollPosition = window.scrollY;
-            let activeIndex = 0;
-
-            sections.forEach((section, index) => {
-                const sectionTop = section.offsetTop - 50; // Small offset for smoother transition
-                const sectionBottom = sectionTop + section.offsetHeight;
-
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    activeIndex = index % images.length;
-                }
+        function showTab(tabId) {
+            tabPanels.forEach(panel => {
+                panel.classList.toggle('active', panel.id === tabId);
             });
 
-            if (activeIndex !== currentImageIndex) {
-                images[currentImageIndex].classList.remove('active');
-                images[activeIndex].classList.add('active');
-                currentImageIndex = activeIndex;
-            }
+            tabButtons.forEach(button => {
+                button.classList.toggle('active', button.dataset.tab === tabId);
+            });
+
+            updateBackgroundForTab(tabId);
         }
 
-        window.addEventListener('scroll', updateBackground);
-        updateBackground();
+        function updateBackgroundForTab(tabId) {
+            const activePanelIndex = Array.from(tabPanels).findIndex(panel => panel.id === tabId);
+            const activeIndex = activePanelIndex >= 0 ? activePanelIndex % images.length : 0;
+
+            images[currentImageIndex].classList.remove('active');
+            images[activeIndex].classList.add('active');
+            currentImageIndex = activeIndex;
+        }
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                showTab(button.dataset.tab);
+            });
+        });
+
+        showTab('teaching');
     </script>
 </body>
 </html>
-
