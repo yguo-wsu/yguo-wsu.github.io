@@ -496,10 +496,12 @@
         </footer>
     </div>
 
-    <script>
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
         const images = document.querySelectorAll('.background-image');
         const tabPanels = document.querySelectorAll('.tab-panel');
         const tabButtons = document.querySelectorAll('.tab-button');
+
         let currentImageIndex = 0;
 
         function showTab(tabId) {
@@ -508,18 +510,32 @@
             });
 
             tabButtons.forEach(button => {
-                button.classList.toggle('active', button.dataset.tab === tabId);
+                const isActive = button.dataset.tab === tabId;
+
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-selected', String(isActive));
             });
 
             updateBackgroundForTab(tabId);
         }
 
         function updateBackgroundForTab(tabId) {
-            const activePanelIndex = Array.from(tabPanels).findIndex(panel => panel.id === tabId);
-            const activeIndex = activePanelIndex >= 0 ? activePanelIndex % images.length : 0;
+            if (images.length === 0) {
+                return;
+            }
 
-            images[currentImageIndex].classList.remove('active');
-            images[activeIndex].classList.add('active');
+            const activePanelIndex = Array.from(tabPanels)
+                .findIndex(panel => panel.id === tabId);
+
+            const activeIndex =
+                activePanelIndex >= 0
+                    ? activePanelIndex % images.length
+                    : 0;
+
+            images.forEach((image, index) => {
+                image.classList.toggle('active', index === activeIndex);
+            });
+
             currentImageIndex = activeIndex;
         }
 
@@ -529,7 +545,9 @@
             });
         });
 
+        // Default tab
         showTab('research');
-    </script>
+    });
+</script>
 </body>
 </html>
